@@ -35,7 +35,7 @@ const MainLayout = () => {
           <Route path="/admin" exact component={Admin} />
           <Route path="/bookings" exact component={Bookings} />
           <Route path="/user/:id" exact component={UserDetails} />
-          <Route path="/oneBooking" exact component={BookingDetails} />
+          <Route path="/booking/:id" exact component={BookingDetails} />
           <Route path="/complaints" exact component={Complaints} />
         </Switch>
       </div>

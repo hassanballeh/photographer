@@ -1,7 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Booking from "./Booking";
+import axios from "axios";
 
 function Bookings() {
+  const [bookings, setBookings] = useState([]);
+
+  useEffect(() => {
+    const fetchBookings = async () => {
+      try {
+        const response = await axios.get(
+          "https://brightness-y1n2.onrender.com/api/Booking/"
+        );
+        setBookings(response.data.data);
+      } catch (error) {
+        console.error("Error fetching bookings:", error);
+      }
+    };
+
+    fetchBookings();
+  }, []);
+
   let all1 = [
     {
       name: "Ali",
@@ -67,13 +85,13 @@ function Bookings() {
   const [selectedFilter, setSelectedFilter] = useState("all");
   const filterData =
     selectedFilter == "all"
-      ? all1
+      ? bookings
       : selectedFilter == "pending"
-      ? all1.filter((e) => e.action == "pending")
+      ? bookings.filter((e) => e.action == "pending")
       : selectedFilter == "accepted"
-      ? all1.filter((e) => e.action == "accepted")
+      ? bookings.filter((e) => e.action == "accepted")
       : selectedFilter == "rejected"
-      ? all1.filter((e) => e.action == "rejected")
+      ? bookings.filter((e) => e.action == "rejected")
       : null;
 
   return (
@@ -112,15 +130,8 @@ function Bookings() {
             </h2>
           </div>
           <div className="flex flex-col gap-6">
-            {bookings.map((booking, i) => (
-              <Booking
-                name={booking.name}
-                date={booking.date}
-                location={booking.location}
-                action={booking.action}
-                key={i}
-                index={i}
-              />
+            {filterData.map((booking, i) => (
+              <Booking key={booking.id} booking={booking} index={i} />
             ))}
           </div>
         </div>
