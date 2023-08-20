@@ -112,7 +112,7 @@ function Bookings() {
             </h2>
           </div>
           <div className="flex flex-col gap-6">
-            {filterData.map((booking, i) => (
+            {bookings.map((booking, i) => (
               <Booking
                 name={booking.name}
                 date={booking.date}

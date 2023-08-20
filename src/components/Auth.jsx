@@ -1,7 +1,47 @@
 import React, { useState } from "react";
-
+import axios from "axios";
 function App() {
   const [isSign, SetIsSign] = useState(false);
+  const [formData, setFormData] = useState({
+    username: "",
+    email: "",
+    password: "",
+    phone: "",
+  });
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    if (!isSign) {
+      try {
+        const response = await axios.post(
+          "https://brightness-y1n2.onrender.com/api/User/Login",
+          formData
+        );
+        console.log("Response:", response.data);
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    }
+    if (isSign) {
+      try {
+        const response = await axios.post(
+          "https://brightness-y1n2.onrender.com/api/User/Signup",
+          formData
+        );
+        console.log("Response:", response.data);
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    }
+  };
   console.log(isSign);
   return (
     <div className="bg-[#191624] h-[100vh]">
@@ -19,24 +59,28 @@ function App() {
               </h2>
               <p className="mt-2 text-center text-sm text-gray-600"></p>
             </div>
-            <form className="mt-8 space-y-6">
+            <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
               <div className="rounded-md shadow-sm -space-y-px flex flex-col gap-3">
                 <div>
                   <input
                     type="email"
+                    name="email"
                     autoComplete="email"
                     required
                     className="appearance-none  w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                     placeholder="Email address"
+                    onChange={handleInputChange}
                   />
                 </div>
                 <div>
                   <input
                     type="password"
+                    name="password"
                     autoComplete="current-password"
                     required
                     className="appearance-none  w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                     placeholder="Password"
+                    onChange={handleInputChange}
                   />
                 </div>
               </div>
@@ -77,39 +121,47 @@ function App() {
               </h2>
               <p className="mt-2 text-center text-sm text-gray-600"></p>
             </div>
-            <form className="mt-8 space-y-6">
+            <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
               <div className="rounded-md shadow-sm -space-y-px flex flex-col gap-3">
                 <div>
                   <input
                     type="text"
+                    name="username"
                     required
                     className="appearance-none  w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                     placeholder="Username"
+                    onChange={handleInputChange}
                   />
                 </div>
                 <div>
                   <input
                     type="email"
+                    name="email"
                     required
                     className="appearance-none  w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                     placeholder="Email address"
+                    onChange={handleInputChange}
                   />
                 </div>
                 <div>
                   <input
                     type="password"
+                    name="password"
                     required
                     className="appearance-none  w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                     placeholder="Password"
+                    onChange={handleInputChange}
                   />
                 </div>
                 <div>
                   <input
                     type="phone"
+                    name="phone"
                     autoComplete="current-password"
                     required
                     className="appearance-none    w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                     placeholder="Phone number"
+                    onChange={handleInputChange}
                   />
                 </div>
               </div>

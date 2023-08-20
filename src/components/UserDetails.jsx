@@ -1,62 +1,61 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-
+import { useParams } from "react-router-dom";
 function User() {
-  const [users, setUsers] = useState([]);
+  const [post, setPost] = useState(null);
+  const { postId } = useParams();
 
   useEffect(() => {
-    const apiUrl = "https://brightness-y1n2.onrender.com/api/Photographer";
-
     axios
-      .get(apiUrl, {
-        headers: {
-          accept: "application/json",
-          contentType: "application/json",
-        },
-      })
+      .get(`https://brightness-y1n2.onrender.com/api/Photographer/${postId}`)
       .then((response) => {
-        setUsers(response.data.data);
+        setPost(response.data);
       })
       .catch((error) => {
-        console.error("Error fetching data:", error);
+        console.error("Error fetching post:", error);
       });
-  }, []);
+  }, [postId]);
+  console.log("postId", postId);
+  if (!post) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div className="bg-[#191624] rounded-md mt-5">
       <div className="flex flex-col gap-5 p-4">
         <div className=" flex gap-2">
           <h2 className="text-white text-xl">Name:</h2>
-          <p className="text-gray-400 text-lg">{users.name}</p>
+          <p className="text-gray-400 text-lg"></p>
         </div>
         <div className=" flex gap-2">
           <h2 className="text-white text-xl">Password:</h2>
-          <p className="text-gray-400  text-lg">{users.password}</p>
+          <p className="text-gray-400  text-lg"></p>
         </div>
         <div className=" flex gap-2">
           <h2 className="text-white text-xl">Email:</h2>
-          <p className="text-gray-400 text-lg">{users.email}</p>
+          <p className="text-gray-400 text-lg"></p>
         </div>
         <div className=" flex gap-2">
           <h2 className="text-white text-xl">Adress:</h2>
-          <p className="text-gray-400 text-lg">{users.adress}</p>
+          <p className="text-gray-400 text-lg"></p>
         </div>
         <div className=" flex gap-2">
           <h2 className="text-white text-xl">PhoneNumber:</h2>
-          <p className="text-gray-400 text-lg">{users.phoneNumber}</p>
+          <p className="text-gray-400 text-lg"></p>
         </div>
         <div className=" flex gap-2">
           <h2 className="text-white text-xl">Rate:</h2>
-          <p className="text-gray-400 text-lg">{users.rate}</p>
+          <p className="text-gray-400 text-lg"></p>
         </div>
         <div className=" flex gap-2">
           <h2 className="text-white text-xl">Status:</h2>
-          <p className="text-gray-400 text-lg">{users.status}</p>
+          <p className="text-gray-400 text-lg"></p>
         </div>
         <div className=" flex gap-2">
           <h2 className="text-white text-xl">Bio:</h2>
-          <p className="text-gray-400 text-lg">{users.bio}</p>
+          <p className="text-gray-400 text-lg"></p>
         </div>
-        {users.isConfirmed && (
+        {true && (
           <div className="flex gap-3 self-end">
             <button className="rounded-md px-1 py-2 text-white w-[80px] text-center text-base bg-green-400">
               Confirm

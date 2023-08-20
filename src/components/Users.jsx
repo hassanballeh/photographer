@@ -30,6 +30,8 @@ function Users() {
           email={user.email}
           date={user.adress}
           state={user.status}
+          id={user.id}
+          key={user.id}
         />
       ))}
     </div>

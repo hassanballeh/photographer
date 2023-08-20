@@ -1,10 +1,14 @@
 import React from "react";
-
-function User({ name, email, date, state }) {
+import { useHistory } from "react-router-dom";
+function User({ name, email, date, state, id }) {
+  const history = useHistory();
+  const openCard = () => {
+    history.push(`/user/${id}`);
+  };
   return (
     <a
       className="bg-[#191624] flex gap-5 justify-between rounded-md p-3 items-center"
-      href="/user"
+      onClick={openCard}
     >
       <div>
         <h2 className="text-white text-xl">{name}</h2>

@@ -6,7 +6,6 @@ function BookingDetails() {
     date: "12/10/2023",
     price: 100000,
     place: "Lattakia_Jableh",
-
     isConfirmed: true,
     isPremium: false,
   };

@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
-import Home from "./components/Home";
+
 import Auth from "./components/Auth";
 import Sidebar from "./components/Sidebar";
 import Posts from "./components/Posts";
@@ -9,6 +9,7 @@ import Bookings from "./components/Bookings";
 import UserDetails from "./components/UserDetails";
 import BookingDetails from "./components/BookingDetails";
 import AdminAuth from "./components/AdminAuth";
+import Complaints from "./components/Complaints";
 const App = () => {
   return (
     <BrowserRouter>
@@ -33,8 +34,9 @@ const MainLayout = () => {
           <Route path="/posts" exact component={Posts} />
           <Route path="/admin" exact component={Admin} />
           <Route path="/bookings" exact component={Bookings} />
-          <Route path="/user" exact component={UserDetails} />
+          <Route path="/user/:id" exact component={UserDetails} />
           <Route path="/oneBooking" exact component={BookingDetails} />
+          <Route path="/complaints" exact component={Complaints} />
         </Switch>
       </div>
     </div>

@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import {
   HiOutlineHashtag,
-  HiOutlineHome,
   HiOutlineMenu,
   HiOutlinePhotograph,
 } from "react-icons/hi";
 import { RiCloseLine } from "react-icons/ri";
+import { FaBan } from "react-icons/fa";
 import { FaRegUser, FaRegCalendar } from "react-icons/fa";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 const links = [
@@ -14,6 +14,7 @@ const links = [
   { name: "Bookings", to: "/bookings", icon: FaRegCalendar },
   { name: "Post", to: "/posts", icon: HiOutlineHashtag },
   { name: "Log out", to: "/auth", icon: FaRegUser },
+  { name: "complaints", to: "/complaints", icon: FaBan },
 ];
 
 const NavLinks = ({ handleClick }) => {
@@ -23,7 +24,7 @@ const NavLinks = ({ handleClick }) => {
         <NavLink
           key={item.name}
           to={item.to}
-          className={` text-gray-400
+          className={`text-gray-400
            flex flex-row justify-start items-center my-8 text-sm font-medium hover:text-indigo-600`}
         >
           <item.icon className="w-6 h-6 mr-2" />
