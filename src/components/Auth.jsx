@@ -70,6 +70,7 @@ function App() {
                     className="appearance-none  w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                     placeholder="Email address"
                     onChange={handleInputChange}
+                    value={formData.email}
                   />
                 </div>
                 <div>
@@ -80,6 +81,7 @@ function App() {
                     required
                     className="appearance-none  w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                     placeholder="Password"
+                    value={formData.password}
                     onChange={handleInputChange}
                   />
                 </div>
@@ -131,6 +133,7 @@ function App() {
                     className="appearance-none  w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                     placeholder="Username"
                     onChange={handleInputChange}
+                    value={formData.username}
                   />
                 </div>
                 <div>
@@ -141,6 +144,7 @@ function App() {
                     className="appearance-none  w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                     placeholder="Email address"
                     onChange={handleInputChange}
+                    value={formData.email}
                   />
                 </div>
                 <div>
@@ -151,6 +155,7 @@ function App() {
                     className="appearance-none  w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                     placeholder="Password"
                     onChange={handleInputChange}
+                    value={formData.password}
                   />
                 </div>
                 <div>
@@ -162,6 +167,7 @@ function App() {
                     className="appearance-none    w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                     placeholder="Phone number"
                     onChange={handleInputChange}
+                    value={formData.phone}
                   />
                 </div>
               </div>

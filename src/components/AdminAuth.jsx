@@ -1,6 +1,23 @@
-import React from "react";
-
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 function AdminAuth() {
+  const history = useHistory();
+  const [postData, setPostData] = useState({
+    password: "",
+  });
+  const handelSubmit = (e) => {
+    e.preventDefault();
+    if (postData.password == "12345678") {
+      history.push("/");
+    }
+  };
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setPostData({
+      ...postData,
+      [name]: value,
+    });
+  };
   return (
     <div className="bg-[#191624] h-[100vh]">
       <div className="h-full flex items-center justify-center pt-30 px-4 sm:px-6 lg:px-8">
@@ -16,7 +33,7 @@ function AdminAuth() {
             </h2>
             <p className="mt-2 text-center text-sm text-gray-600"></p>
           </div>
-          <form className="mt-8 space-y-6">
+          <form className="mt-8 space-y-6" onSubmit={handelSubmit}>
             <div className="rounded-md shadow-sm -space-y-px flex flex-col gap-3">
               <div>
                 <input
@@ -24,6 +41,9 @@ function AdminAuth() {
                   required
                   className="appearance-none  w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                   placeholder="Password"
+                  name="password"
+                  value={postData.password}
+                  onChange={handleInputChange}
                 />
               </div>
             </div>
